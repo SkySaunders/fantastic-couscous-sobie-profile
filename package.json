@@ -6,7 +6,6 @@
   "version": "1.0.0",
   "description": "CIS 486 Spring 2025 The Sobie Dev Co. profile",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
