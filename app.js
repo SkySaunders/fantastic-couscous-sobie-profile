@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
 
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))
 
 // endpoint, middlewares(s)
@@ -12,6 +13,10 @@ app.get('/', function (req, res) {
 //now has "nodemon" page, create link to this page
 app.get('/nodemon', function (req, res) {
     res.send('this is a working page')
+})
+
+app.get('/ejs', function (req, res) {
+    res.render('words')
 })
 
 app.get('/helloRender', function (req, res){
