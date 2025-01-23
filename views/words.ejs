@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Page</title>
 </head>
 <body>
-    <h1>im now in ejs render! woohoo!</h1>
+    <h1>Welcome to Render!</h1>
+    <form method="POST" action="/saveMyName" This has a title>
+        <input name="MyName">
+        <input type="submit" value="Please save my name">
+    </form>
+    <br>
+    <form method="GET" action="/saveMyNameGet">
+        <input name="MyName">
+        <input type="submit" value="Please save my name">
+    </form>
 </body>
 </html>
