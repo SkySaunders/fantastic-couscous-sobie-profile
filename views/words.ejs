@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <title>
+        <%=pageTitle%>
+    </title>
 </head>
+
 <body>
     <h1>Welcome to Render!</h1>
+    <p>
+        <%=pageTitle%>
+    </p>
     <form method="POST" action="/saveMyName" This has a title>
         <input name="MyName">
         <input type="submit" value="Please save my name">
@@ -16,5 +22,8 @@
         <input name="MyName">
         <input type="submit" value="Please save my name">
     </form>
+    <br>
+    <a href="/">return home</a>
 </body>
+
 </html>
