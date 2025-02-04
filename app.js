@@ -34,39 +34,56 @@ async function run() {
 }
 run().catch(console.dir);
 
+//receives data from mongoDB
+async function getData() {
+  await client.connect();
+  let collection = await client.db("justworks-app-db").collection("justwork-app-names");
+  let results = await collection.find({}).toArray();
+  console.log(results);
+  return results;
+}
+
+//reads data from the collection and logs to the console
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData();
+  console.log(getDataResults);
+  res.render('songs',
+    { songData: getDataResults });
+})
+
 
 // endpoint, middlewares(s)
 app.get('/', function (req, res) {
-    res.sendFile('index.html')
+  res.sendFile('index.html')
 })
 
 //now has "nodemon" page, create link to this page
 app.get('/nodemon', function (req, res) {
-    res.send('this is a working page')
+  res.send('this is a working page')
 })
 
 app.get('/ejs', function (req, res) {
-    res.render('words',
-        { pageTitle: req.body.MyName });
+  res.render('words',
+    { pageTitle: req.body.MyName });
 })
 
 app.get('/helloRender', function (req, res) {
-    res.send('Hello from Real World<br><a href="/">return home<a>')
+  res.send('Hello from Real World<br><a href="/">return home<a>')
 })
 //uses POST method to get info from the dom
 app.post('/saveMyName', function (req, res) {
-    console.log('did we hit the endpoint?');
-    console.log(req.body);
-    res.render('words', { pageTitle: req.body.MyName });
+  console.log('did we hit the endpoint?');
+  console.log(req.body);
+  res.render('words', { pageTitle: req.body.MyName });
 })
 //uses query from dom to get information
 //needs work getting the info back to req
 app.get('/saveMyNameGet', function (req, res) {
-    console.log('did we hit the get endpoint?');
-    console.log(req.query);
-    res.redirect('/ejs');
-    let reqName= req.query.MyName;
-    res.render('words', {pageTitle: reqName})
+  console.log('did we hit the get endpoint?');
+  console.log(req.query);
+  res.redirect('/ejs');
+  let reqName = req.query.MyName;
+  res.render('words', { pageTitle: reqName })
 })
 
 

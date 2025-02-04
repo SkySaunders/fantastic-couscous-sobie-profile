@@ -1,0 +1,30 @@
+#profile-pic {
+    max-height: 150px; 
+    margin-right: 10px;
+}
+.navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.center {
+    width: 75%;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+  }
+  
+  .card-img-top{
+    height: 50%;
+  }
+
+  .list-group{
+    font-family: "Lucida Handwriting";
+  }
