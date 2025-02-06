@@ -3,9 +3,10 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
+const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
-console.log(uri)
+// console.log(uri)
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -61,6 +62,52 @@ app.get('/', function (req, res) {
 app.get('/nodemon', function (req, res) {
   res.send('this is a working page')
 })
+
+
+app.get('/insert', async (req, res) => {
+
+  console.log('in /insert');
+
+  let newSong = req.query.myName;
+  // let newSong = req.body.myName;
+  console.log(newSong);
+  //connect to db,
+  await client.connect();
+  //point to the collection 
+  await client.db("justworks-app-db").collection("justwork-app-names").insertOne({ given_name : "newSong" });
+  res.redirect('/read');
+
+});
+
+app.post('/delete/:id', async (req,res)=>{
+
+  console.log("in delete, req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("justworks-app-db").collection("justwork-app-names");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)}).then(result => {
+  console.log(result); 
+  res.redirect('/read');})
+
+})
+
+
+app.post('/update', async (req,res)=>{
+
+  console.log("req.body: ", req.body)
+
+  client.connect; 
+  const collection = client.db("justworks-app-db").collection("justwork-app-names");
+  let result = await collection.findOneAndUpdate( 
+  {"_id": new ObjectId(req.body.nameID)}, { $set: {given_name: req.body.inputUpdateName } }
+)
+.then(result => {
+  console.log(result); 
+  res.redirect('/read');
+})
+});
+
 
 app.get('/ejs', function (req, res) {
   res.render('words',
