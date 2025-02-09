@@ -1,11 +1,10 @@
-
 <h1> songs </h1>
 
 
 <form method="POST" action="/delete/<%=songData[0]._id%>">
     <%=songData[0].given_name%>
-    <!-- <p>action="/delete/<%=songData[0]._id%>"</p> -->
-    <input type="submit" value="delete the only song">
+        <!-- <p>action="/delete/<%=songData[0]._id%>"</p> -->
+        <input type="submit" value="delete the only song">
 </form>
 
 
@@ -21,7 +20,7 @@
 
 <br>
 <a href="/insert">Enter into the database</a>
-<form>
+<form method="get" action="/insert">
     <input name="myName">
     <input type="submit" value="Save my name">
 </form>

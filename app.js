@@ -74,7 +74,7 @@ app.get('/insert', async (req, res) => {
   //connect to db,
   await client.connect();
   //point to the collection 
-  await client.db("justworks-app-db").collection("justwork-app-names").insertOne({ given_name : "newSong" });
+  await client.db("justworks-app-db").collection("justwork-app-names").insertOne({ given_name : req.query });
   res.redirect('/read');
 
 });
