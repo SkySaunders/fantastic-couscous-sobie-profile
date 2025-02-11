@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
-// console.log(uri)
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -21,118 +20,59 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
+const mongoCollection = client.db("skylerSobieProfile").collection("skylerSobieBlog");
 
-//receives data from mongoDB
-async function getData() {
-  await client.connect();
-  let collection = await client.db("justworks-app-db").collection("justwork-app-names");
-  let results = await collection.find({}).toArray();
-  console.log(results);
-  return results;
+function initProfileData() {
+  mongoCollection.insertOne({
+    title: "This is my dev profile",
+    post: "This is a post"
+  });
 }
 
 //reads data from the collection and logs to the console
-app.get('/read', async function (req, res) {
-  let getDataResults = await getData();
-  console.log(getDataResults);
-  res.render('songs',
-    { songData: getDataResults });
+app.get('/', async function (req, res) {
+  let results = await mongoCollection.find({}).toArray();
+  res.render('profile',
+    { profileData: results });
 })
 
 
-// endpoint, middlewares(s)
-app.get('/', function (req, res) {
-  res.sendFile('index.html')
-})
+app.post('/insert', async (req, res) => {
 
-//now has "nodemon" page, create link to this page
-app.get('/nodemon', function (req, res) {
-  res.send('this is a working page')
-})
-
-
-app.get('/insert', async (req, res) => {
-
-  console.log('in /insert');
-
-  let newSong = req.query.myName;
-  // let newSong = req.body.myName;
-  console.log(newSong);
-  //connect to db,
-  await client.connect();
-  //point to the collection 
-  await client.db("justworks-app-db").collection("justwork-app-names").insertOne({ given_name : req.query });
-  res.redirect('/read');
+  let results = await mongoCollection.insertOne({
+    title: req.body.title,
+    post: req.body.post
+  })
+  res.redirect('/')
 
 });
 
-app.post('/delete/:id', async (req,res)=>{
+app.post('/delete', async function (req, res) {
 
-  console.log("in delete, req.parms.id: ", req.params.id)
+  let result = await mongoCollection.findOneAndDelete(
+    {
+      "_id": new ObjectId(req.body.deleteId)
+    }
+  ).then(result => {
 
-  client.connect; 
-  const collection = client.db("justworks-app-db").collection("justwork-app-names");
-  let result = await collection.findOneAndDelete( 
-  {"_id": new ObjectId(req.params.id)}).then(result => {
-  console.log(result); 
-  res.redirect('/read');})
-
-})
-
-
-app.post('/update', async (req,res)=>{
-
-  console.log("req.body: ", req.body)
-
-  client.connect; 
-  const collection = client.db("justworks-app-db").collection("justwork-app-names");
-  let result = await collection.findOneAndUpdate( 
-  {"_id": new ObjectId(req.body.nameID)}, { $set: {given_name: req.body.inputUpdateName } }
-)
-.then(result => {
-  console.log(result); 
-  res.redirect('/read');
-})
+    res.redirect('/');
+  })
 });
 
-
-app.get('/ejs', function (req, res) {
-  res.render('words',
-    { pageTitle: req.body.MyName });
-})
-
-app.get('/helloRender', function (req, res) {
-  res.send('Hello from Real World<br><a href="/">return home<a>')
-})
-//uses POST method to get info from the dom
-app.post('/saveMyName', function (req, res) {
-  console.log('did we hit the endpoint?');
-  console.log(req.body);
-  res.render('words', { pageTitle: req.body.MyName });
-})
-//uses query from dom to get information
-//needs work getting the info back to req
-app.get('/saveMyNameGet', function (req, res) {
-  console.log('did we hit the get endpoint?');
-  console.log(req.query);
-  res.redirect('/ejs');
-  let reqName = req.query.MyName;
-  res.render('words', { pageTitle: reqName })
-})
-
+app.post('/update', async (req, res) => {
+  let result = await mongoCollection.findOneAndUpdate(
+    { _id: ObjectId.createFromHexString(req.body.updateId) }, {
+    $set:
+    {
+      title: req.body.updateTitle,
+      post: req.body.updatePost
+    }
+  }
+  ).then(result => {
+    console.log(result);
+    res.redirect('/');
+  })
+});
 
 app.listen(port, () => console.log(`server is running on ... ${port}`));
 

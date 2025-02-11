@@ -1,30 +1,21 @@
-#profile-pic {
-    max-height: 150px; 
-    margin-right: 10px;
-}
-.navbar-brand {
-    font-family: 'Times New Roman', Times, serif;
+.card-img-top {
+  border-radius: 50%;
 }
 
-.center {
-    width: 75%;
-    position: relative;
-    text-align: center;
-    color: white;
+.card1{
+  left: 30px;
 }
 
-.centered {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: xx-large;
-  }
-  
-  .card-img-top{
-    height: 50%;
-  }
+.col-md-8 {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
 
-  .list-group{
-    font-family: "Lucida Handwriting";
-  }
+.card-body{
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
