@@ -10,87 +10,76 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
 </head>
 
-<main id="profile">
-
-
-    <nav class="navbar navbar-light bg-light">
+<body>
+    <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img src="https://private-user-images.githubusercontent.com/156210299/412187172-7a7f0a28-7cda-4c46-8cb9-d5e865a5793e.jpeg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzkzMTI3ODEsIm5iZiI6MTczOTMxMjQ4MSwicGF0aCI6Ii8xNTYyMTAyOTkvNDEyMTg3MTcyLTdhN2YwYTI4LTdjZGEtNGM0Ni04Y2I5LWQ1ZTg2NWE1NzkzZS5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIxMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMTFUMjIyMTIxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDM2YzhjYzI2Y2VhNDlkNzZiNWQwMmVmNDI4MWE0NjZlNzIxZDM4NTI5Yjk1MjQxZGMwOTBkNGFmYTk2N2YwNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.5AX9ZE0ZIfm6grt6ioIzifVDkrahoGCA6-6y_gdQSJA"
-                width="180" height="180" alt="profile photo">
+            <img src="/images/pfp.jpeg" class="pfpImage" width="180" height="200" alt="profile photo">
         </a>
     </nav>
-
+    <br>
     <!-- Card 1 -->
-    <div class="col-md-6 col-lg-4 mb-4">
+    <div class="col-lg-12 col-lg-4 mb-4">
         <div class="card1">
-            <img src="https://una.edu/fsl/images/apa231.jpeg" class="card-img-top" alt="alpha-image1">
             <div class="card-body">
-                <h5 class="card-title">I am a proud member of Alpha Phi Alpha Fraternity, Incorporated</h5>
-                <p class="card-text">February 25th, 2023 I was initiated.</p>
+                <img src="/images/highered.jpeg" class="card-img-top text-center" alt="alpha-image1">
+                <h5 class="card-title">Being a leader and impacting the lives of others is what I truly enjoy doing.
+                </h5>
+                <p class="card-text">I've had many leadership positions with more to come later.</p>
+            </div>
+            <div class="card-body">
+
+                <form method="POST" action="insert/">
+                    <input name="title">
+                    <input name="post">
+                    <button class="btn btn-primary" role="submit">new post</button>
+                </form>
+
+
+                <% profileData.forEach(result=> { %>
+                    <div class="col-md-8">
+
+
+                        <form method="POST" action="update/">
+                            <input name="updateTitle" value="<%= result.title %>">
+                            <input name="updatePost" value="<%= result.post %>">
+                            <input type="hidden" name="updateId" value="<%=result._id %>">
+                            <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
+                        </form>
+
+                        <form method="POST" action="delete/">
+                            <input type="hidden" name="deleteId" value="<%=result._id %>">
+                            <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </div>
+                    <% }); %>
+
             </div>
         </div>
     </div>
-
-    <h2 class="text-center">Dev Skills I possess</h2>
-    <div class="row mt-4">
-        <div class="col-md-12 col-lg-12 mb-12">
-            <div class="card">
-                <div class="card-body">
-
-                    <form method="POST" action="insert/">
-                        <input name="title">
-                        <input name="post">
-                        <button class="btn btn-primary" role="submit">new post</button>
-                    </form>
-
-
-                    <% profileData.forEach(result=> { %>
-                        <div class="col-md-8">
-
-                            
-                            <form method="POST" action="update/">
-                                <input name="updateTitle" value="<%= result.title %>">
-                                <input name="updatePost" value="<%= result.post %>">
-                                <input type="hidden" name="updateId" value="<%=result._id %>">
-                                <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
-                            </form>
-
-                            <form method="POST" action="delete/">
-                                <input type="hidden" name="deleteId" value="<%=result._id %>">
-                                <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
-                            </form>
-                        </div>
-                        <% }); %>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+</body>
 
 <div class="footer-clean">
-    <footer class="text-center text-lg-start bg-light text-muted">
+    <footer class="text-center text-lg-start bg-dark text-muted">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 item">
                     <h3>Pages Stuffs</h3>
                     <ul>
-                        <li><a href="https://github.com/SkySaunders/animated-sniffle-foxtrot" target="_blank">See the
+                        <li><a href="https://github.com/SkySaunders/fantastic-couscous-sobie-profile"
+                                target="_blank">See the
                                 Code</a></li>
-                        <li><a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fskysaunders.github.io%2Fanimated-sniffle-foxtrot%2F"
-                                target="_blank">Check the page's validity</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
                     <h3>Socials</h3>
                     <ul>
-                        <li><a href="https://github.com/SkySaunders" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/SkySaunders" target="_blank">View my Github Projects</a></li>
                         <li><a href="https://www.linkedin.com/groups/12058862/" target="_blank">You will join the
                                 LinkedIn.</a></li>
                     </ul>
