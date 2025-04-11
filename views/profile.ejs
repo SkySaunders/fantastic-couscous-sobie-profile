@@ -16,82 +16,35 @@
 
 </head>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="/images/pfp.jpeg" class="pfpImage" width="180" height="200" alt="profile photo">
-        </a>
-    </nav>
-    <br>
-    <!-- Card 1 -->
-    <div class="col-lg-12 col-lg-4 mb-4">
-        <div class="card1">
-            <div class="card-body">
-                <img src="/images/highered.jpeg" class="card-img-top text-center" alt="alpha-image1">
-                <h5 class="card-title">Being a leader and impacting the lives of others is what I truly enjoy doing.
-                </h5>
-                <p class="card-text">I've had many leadership positions with more to come later.</p>
-            </div>
-            <div class="card-body">
-
-                <form method="POST" action="insert/">
-                    <input name="title">
-                    <input name="post">
-                    <button class="btn btn-primary" role="submit">new post</button>
-                </form>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="#">
+    </a>
+</nav>
 
 
-                <% profileData.forEach(result=> { %>
-                    <div class="col-md-8">
-
-
-                        <form method="POST" action="update/">
-                            <input name="updateTitle" value="<%= result.title %>">
-                            <input name="updatePost" value="<%= result.post %>">
-                            <input type="hidden" name="updateId" value="<%=result._id %>">
-                            <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
-                        </form>
-
-                        <form method="POST" action="delete/">
-                            <input type="hidden" name="deleteId" value="<%=result._id %>">
-                            <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
-                        </form>
-                    </div>
-                    <% }); %>
-
-            </div>
-        </div>
-    </div>
-</body>
-
-<div class="footer-clean">
-    <footer class="text-center text-lg-start bg-dark text-muted">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Pages Stuffs</h3>
-                    <ul>
-                        <li><a href="https://github.com/SkySaunders/fantastic-couscous-sobie-profile"
-                                target="_blank">See the
-                                Code</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Socials</h3>
-                    <ul>
-                        <li><a href="https://github.com/SkySaunders" target="_blank">View my Github Projects</a></li>
-                        <li><a href="https://www.linkedin.com/groups/12058862/" target="_blank">You will join the
-                                LinkedIn.</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li><a>Email: ssaunders@una.edu</a></li>
-                    </ul>
-                    <p class="copyright"> © 2025 Copyright: Skyler Saunders</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- Card 1 -->
+<!-- Opening Image for the webpage -->
+<div class="w-75 p-3">
+    <img src="https://studentreasures.com/wp-content/uploads/2022/08/man-speaking-at-a-business-conference-picture-id499517325.jpg"
+        class="card-img-top" alt="highlight-image1">
+    <div class="centered">"Sobie Dev Co"</div>
 </div>
+
+<!-- Stuff between the images -->
+<div class="row">
+    <div class="col-lg-6">
+        <img src="https://www.sketchbubble.com/blog/wp-content/uploads/2020/02/academic-presentation1.png"
+            class="sml-image">
+    </div>
+    <div class="col-lg-6">
+        <h1>Summary</h1>
+        <h3>Sobie is an annual academic conference with a focus on student/lecturer collaboration.</h3>
+    </div>
+</div>
+<p>This is some text to see if this is working!</p>
+
+<!-- Secondary Image to show something -->
+<div class="w-75 p-3">
+    <img src="https://images.squarespace-cdn.com/content/v1/63d40fe2cbd65e16cb8098b6/33e99aa4-2fae-4e11-83e3-50f422dce610/education+conferences+2024.jpeg?format=2500w"
+        class="card-img-top" alt="highlight-image2">
