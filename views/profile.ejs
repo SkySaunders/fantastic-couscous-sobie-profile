@@ -1,50 +1,48 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <link rel="stylesheet" href="/styles/style.css"> <!-- ensure this path is correct -->
 </head>
+
+<body>
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="#">
+        <img src="#" alt="Logo">
     </a>
 </nav>
 
-
-<!-- Card 1 -->
-<!-- Opening Image for the webpage -->
-<div class="w-75 p-3">
+<!-- Hero Image with Centered Text -->
+<div class="image-container d-flex justify-content-center p-3">
     <img src="https://studentreasures.com/wp-content/uploads/2022/08/man-speaking-at-a-business-conference-picture-id499517325.jpg"
-        class="card-img-top" alt="highlight-image1">
-    <div class="centered">"Sobie Dev Co"</div>
+         class="card-img-top w-75" alt="highlight-image1">
+    <div class="centered-text">Annual SOBIE Conference</div>
 </div>
 
-<!-- Stuff between the images -->
-<div class="row">
-    <div class="col-lg-6">
+<!-- Row with Image and Text -->
+<div class="row w-100 mx-0 my-5 align-items-center">
+    <div class="col-lg-6 d-flex justify-content-center">
         <img src="https://www.sketchbubble.com/blog/wp-content/uploads/2020/02/academic-presentation1.png"
-            class="sml-image">
+             class="sml-image w-75" alt="presentation">
     </div>
     <div class="col-lg-6">
         <h1>Summary</h1>
-        <h3>Sobie is an annual academic conference with a focus on student/lecturer collaboration.</h3>
+        <h3>SOBIE is an annual academic conference with a focus on student/lecturer collaboration.</h3>
     </div>
 </div>
-<p>This is some text to see if this is working!</p>
 
-<!-- Secondary Image to show something -->
-<div class="w-75 p-3">
+<!-- Secondary Centered Image -->
+<div class="d-flex justify-content-center p-3">
     <img src="https://images.squarespace-cdn.com/content/v1/63d40fe2cbd65e16cb8098b6/33e99aa4-2fae-4e11-83e3-50f422dce610/education+conferences+2024.jpeg?format=2500w"
-        class="card-img-top" alt="highlight-image2">
+         class="card-img-top w-75" alt="highlight-image2">
+</div>
+
+</body>
+</html>
