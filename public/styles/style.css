@@ -3,18 +3,9 @@
 }
 
 .card-img-top {
-  /* margin-left: auto; */
   margin-right: 50px;
 }
 
-/* Optional: body background style */
-body {
-  /* background-color: #e5e5f7;
-  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px),
-                    repeating-linear-gradient(#489f5055, #489f50);
-  background-size: 100% 100%;
-  height: 100%; */
-}
 
 .col-md-8 {
   margin: auto;
@@ -23,16 +14,12 @@ body {
   padding: 10px;
 }
 
-.card-body {
-  margin: auto;
-  width: 50%;
-  text-align: center;
-}
-
 /* Overlay text on image */
 .image-container {
   position: relative;
   display: inline-block;
+  background: #3fe5fb;
+  background: linear-gradient(256deg, rgba(63, 229, 251, 1) 0%, rgba(140, 70, 252, 1) 100%);
 }
 
 .centered-text {
