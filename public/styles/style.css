@@ -1,18 +1,7 @@
-.pfpImage {
-  border-radius: 50%;
-}
-
 .card-img-top {
   margin-right: 50px;
 }
 
-
-.col-md-8 {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-}
 
 /* Overlay text on image */
 .image-container {
@@ -36,6 +25,6 @@
 /* Optional: scale image smaller on smaller screens */
 @media (max-width: 768px) {
   .centered-text {
-    font-size: 1.5rem;
+    font-size: 1.0rem;
   }
 }
