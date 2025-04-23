@@ -4,9 +4,7 @@
 
 
 /* Overlay text on image */
-.image-container {
-  position: relative;
-  display: inline-block;
+.container {
   background: #3fe5fb;
   background: linear-gradient(256deg, rgba(63, 229, 251, 1) 0%, rgba(140, 70, 252, 1) 100%);
 }
